@@ -1,5 +1,7 @@
 {
   "name": "emr",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "3"
+  }
 }
