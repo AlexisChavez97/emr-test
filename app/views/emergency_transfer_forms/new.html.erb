@@ -1,0 +1,183 @@
+<h1>Emergency transfer form</h1>
+
+<%= form_for @emergency_transfer_form, url: emergency_transfer_forms_path do |f| %>
+  <div class="form-group">
+    <%= f.label :facility_name %>
+    <%= f.text_field :facility_name, class: "form-control" %>
+  </div>
+
+  <h2>Patient info</h2>
+
+  <div class="form-group">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :middle_name %>
+    <%= f.text_field :middle_name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label 'Medical record' %>
+    <%= f.text_field :mr, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label 'Date of birth' %>
+    <%= f.date_field :dob, class: "form-control date" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :gender %>
+    <%= f.select(:gender, Patient.genders.keys, {}, { class: "form-control" }) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :age %>
+    <%= f.text_field :age, class: "form-control" %>
+  </div>
+
+  <h2>Admission</h2>
+
+  <div class="form-group">
+    <%= f.label 'Time of admission' %>
+    <%= f.datetime_field :admission_moment, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :admission_diagnosis_coding_system %>
+    <%= f.text_field :admission_diagnosis_coding_system, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :admission_diagnosis_code %>
+    <%= f.text_field :admission_diagnosis_code, class: "form-control" %>
+  </div>
+
+   <div class="form-group">
+    <%= f.label :admission_diagnosis_description_name %>
+    <%= f.text_field :admission_diagnosis_description, class: "form-control" %>
+  </div>
+
+  <h2>Diagnosis</h2>
+
+  <div class="form-group">
+    <%= f.label 'Final diagnosis coding system' %>
+    <%= f.text_field :patient_diagnosis_coding_system, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label 'Final diagnosis code' %>
+    <%= f.text_field :patient_diagnosis_code, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label 'Final diagnosis description' %>
+    <%= f.text_field :patient_diagnosis_description, class: "form-control" %>
+  </div>
+
+
+  <div class="form-group">
+    <%= f.label :chronic_conditions_coding_system %>
+    <%= f.text_field :chronic_conditions_coding_system, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :chronic_conditions_code %>
+    <%= f.text_field :chronic_conditions_code, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :chronic_conditions_description %>
+    <%= f.text_field :chronic_conditions_description, class: "form-control" %>
+  </div>
+
+  <h2>Symptoms</h2>
+
+  <div class="form-group">
+    <%= f.label 'Description' %>
+    <%= f.text_field :symptom_description, class: "form-control" %>
+  </div>
+
+  <h2>Observations</h2>
+
+  <div class="form-group">
+    <%= f.label 'Description' %>
+    <%= f.text_field :observation_description, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :observation_moment %>
+    <%= f.datetime_field :observation_moment, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :allergy_description %>
+    <%= f.text_field :allergy_description, class: "form-control" %>
+  </div>
+
+  <h2>Medications</h2>
+
+  <div class="form-group">
+    <%= f.label :medication_order_name %>
+    <%= f.text_field :medication_order_name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :mass_unit %>
+    <%= f.select(:mass_unit, MedicationOrder.mass_units.keys, {}, { class: "form-control" }) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :dosage, placeholder: '(ml)' %>
+    <%= f.text_field :dosage, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :medication_route %>
+    <%= f.select(:medication_route, MedicationOrder.medication_routes.keys, {}, { class: "form-control" }) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :necessity %>
+    <%= f.text_field :necessity, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :value %>
+    <%= f.text_field :value, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :frequency_unit %>
+    <%= f.select(:frequency_unit, OrderFrequency.frequency_units.keys, {}, { class: "form-control" }) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :diagnostic_procedure_description %>
+    <%= f.text_field :diagnostic_procedure_description, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :diagnostic_procedure_moment %>
+    <%= f.datetime_field :diagnostic_procedure_moment, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :treatment_description %>
+    <%= f.text_field :treatment_description, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :treatment_necessity %>
+    <%= f.text_field :treatment_necessity, class: "form-control" %>
+  </div>
+
+  <%= f.submit 'Create summary', class: "btn btn-primary" %>
+<% end %>
