@@ -16,6 +16,7 @@ class PatientTest < ActiveSupport::TestCase
     @subject.mr = '123'
     @subject.dob = Time.now
     @subject.gender = 0
+    @subject.age = '20'
     @subject.admission = @admission
     @subject.facility = @facility
 

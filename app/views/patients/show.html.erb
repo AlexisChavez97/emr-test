@@ -1,0 +1,45 @@
+<%= button_to "Print", "#", onclick: "window.print();return false;", class: "btn btn-primary print" %>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th colspan="4">Emergency Transfer Summary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th colspan="4">Transferring Facility</th>
+    </tr>
+    <tr>
+      <td>
+        <p>
+          Name: <br>
+          <%= @patient.facility.name %>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <th colspan="4" scope="row">Patient Information</th>
+    </tr>
+    <tr>
+      <td><span class="bold-label">First name:</span><br><%= @patient.first_name %></td>
+      <td><span class="bold-label">Middle name:</span><br><%= @patient&.middle_name %></td>
+      <td><span class="bold-label">Last name:</span><br><%= @patient.last_name %></td>
+      <td><span class="bold-label">Medical record:</span><br><%= @patient.mr%></td>
+    </tr>
+    <tr>
+      <td colspan="4">
+        <p>
+          <span class="bold-label">Summary</span><br>
+          This <%= "#{@patient.age}"%> years old <%= "#{@patient.gender}" %> was admitted to <%= "#{@patient.facility.name}" %> on <%= "#{@patient.admission.moment.strftime("%Y-%m-%d")}" %> at <%= "#{@patient.admission.moment.to_s(:time)}" %> due to 
+          <%= "#{@patient.admission.diagnoses.last.description}" %>. The observed symptoms on admission were <%= "#{@patient.admission.symptoms.last.description}" %>. <%= "#{@patient.admission.observations.last.description}" %>.
+          Upon asking about known allergies, the patient disclosed <%= "#{@patient.allergies.last.description}" %>. Upon asking about chronic conditions, the patient disclosed 
+          <%= "#{@patient.chronic_conditions.last.description}" %>. The patient was administered with <%= "#{@patient.medication_orders.last.name}" %>, <%= "#{@patient.medication_orders.last.dosage}" %>, <%= "#{@patient.medication_orders.last.medication_route}" %>
+          <%= "#{@patient.medication_orders.last.order_frequency.value}" %> <%= "#{@patient.medication_orders.last.order_frequency.frequency_unit}" %>, to, <%= "#{@patient.medication_orders.last.necessity}" %>.
+          The staff performed <%= "#{@patient.diagnostic_procedures.last.description}" %> on, <%= "#{@patient.diagnostic_procedures.last.moment.strftime("%Y-%m-%d")}" %> at, <%= "#{@patient.diagnostic_procedures.last.moment.to_s(:time)}" %>.
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to 'Back', patients_path, class: "btn btn-primary" %>

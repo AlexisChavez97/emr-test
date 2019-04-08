@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 2019_04_08_042236) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "allergies_patients", force: :cascade do |t|
+    t.integer "patient_id"
+    t.integer "allergy_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["allergy_id"], name: "index_allergies_patients_on_allergy_id"
+    t.index ["patient_id"], name: "index_allergies_patients_on_patient_id"
+  end
+
   create_table "diagnoses", force: :cascade do |t|
     t.string "coding_system"
     t.string "code"
@@ -88,6 +97,7 @@ ActiveRecord::Schema.define(version: 2019_04_08_042236) do
     t.string "middle_name"
     t.string "last_name", null: false
     t.string "mr", null: false
+    t.string "age", null: false
     t.datetime "dob", null: false
     t.integer "gender", null: false
     t.integer "facility_id"
@@ -97,15 +107,6 @@ ActiveRecord::Schema.define(version: 2019_04_08_042236) do
     t.index ["admission_id"], name: "index_patients_on_admission_id"
     t.index ["facility_id"], name: "index_patients_on_facility_id"
     t.index ["first_name", "mr"], name: "index_patients_on_first_name_and_mr"
-  end
-
-  create_table "patients_allergies", force: :cascade do |t|
-    t.integer "patient_id"
-    t.integer "allergy_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["allergy_id"], name: "index_patients_allergies_on_allergy_id"
-    t.index ["patient_id"], name: "index_patients_allergies_on_patient_id"
   end
 
   create_table "symptoms", force: :cascade do |t|
