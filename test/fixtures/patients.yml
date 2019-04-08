@@ -1,0 +1,9 @@
+bojack:
+  first_name: Bojack
+  middle_name: Horse
+  last_name: Man
+  mr: 12345
+  dob: <%= Time.now - 10.years %>
+  gender: 1
+  admission: first
+  facility: blue_alps
